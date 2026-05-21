@@ -1,4 +1,4 @@
-package com.nttdata.beerreview.model;
+package main.java.com.nttdata.beerreview.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
