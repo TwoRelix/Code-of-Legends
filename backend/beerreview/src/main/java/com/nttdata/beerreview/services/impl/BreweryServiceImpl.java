@@ -1,7 +1,7 @@
 package com.nttdata.beerreview.services.impl;
 
 import com.nttdata.beerreview.dtos.BreweryDTO;
-import com.nttdata.beerreview.repositories.BreweryRepository;
+import com.nttdata.beerreview.repository.BreweryRepository;
 import com.nttdata.beerreview.services.BreweryService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

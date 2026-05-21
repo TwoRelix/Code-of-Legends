@@ -2,10 +2,10 @@ package com.nttdata.beerreview.services.impl;
 
 import com.nttdata.beerreview.dtos.BeerDTO;
 import com.nttdata.beerreview.dtos.SaveBeerDTO;
-import com.nttdata.beerreview.entities.Beer;
-import com.nttdata.beerreview.entities.Brewery;
-import com.nttdata.beerreview.repositories.BeerRepository;
-import com.nttdata.beerreview.repositories.BreweryRepository;
+import com.nttdata.beerreview.model.Beer;
+import com.nttdata.beerreview.model.Brewery;
+import com.nttdata.beerreview.repository.BeerRepository;
+import com.nttdata.beerreview.repository.BreweryRepository;
 import com.nttdata.beerreview.services.BeerService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,6 +56,7 @@ public class BeerServiceImpl implements BeerService {
     @Override
     @Transactional(readOnly = true)
     public List<BeerDTO> listarPorCerveceria(Long breweryId) {
+        // Nota: Asegúrate de que tu compañero añada este método en BeerRepository si da error
         return beerRepository.findByBreweryId(breweryId).stream().map(this::convertToDTO).toList();
     }
 
