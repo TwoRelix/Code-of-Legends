@@ -1,1 +1,92 @@
-<p>add-beer works!</p>
+<div class="add-beer-page">
+      <div class="form-card">
+        <div class="header">
+          <span class="icon">🍺</span>
+          <h1>Añadir Cerveza</h1>
+          <p>Comparte una nueva cerveza artesanal con la comunidad.</p>
+        </div>
+
+        <form [formGroup]="beerForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <label>Nombre</label>
+            <input
+              type="text"
+              formControlName="name"
+              placeholder="Ej: IPA Tropical"
+            />
+
+            @if (beerForm.get('name')?.invalid &&
+                 beerForm.get('name')?.touched) {
+              <small>El nombre es obligatorio.</small>
+            }
+          </div>
+
+          <div class="form-group">
+            <label>Marca</label>
+            <input
+              type="text"
+              formControlName="brand"
+              placeholder="Ej: BrewDog"
+            />
+
+            @if (beerForm.get('brand')?.invalid &&
+                 beerForm.get('brand')?.touched) {
+              <small>La marca es obligatoria.</small>
+            }
+          </div>
+
+          <div class="form-group">
+            <label>Tipo</label>
+
+            <select formControlName="type">
+              <option value="">Selecciona un tipo</option>
+              <option value="IPA">IPA</option>
+              <option value="Lager">Lager</option>
+              <option value="Stout">Stout</option>
+              <option value="Pilsner">Pilsner</option>
+              <option value="Porter">Porter</option>
+            </select>
+
+            @if (beerForm.get('type')?.invalid &&
+                 beerForm.get('type')?.touched) {
+              <small>Selecciona un tipo.</small>
+            }
+          </div>
+
+          <div class="form-group">
+            <label>Graduación (%)</label>
+
+            <input
+              type="number"
+              formControlName="alcohol"
+              placeholder="Ej: 6.5"
+            />
+
+            @if (beerForm.get('alcohol')?.invalid &&
+                 beerForm.get('alcohol')?.touched) {
+              <small>Introduce una graduación válida.</small>
+            }
+          </div>
+
+          <div class="form-group">
+            <label>Descripción</label>
+
+            <textarea
+              rows="4"
+              formControlName="description"
+              placeholder="Describe el sabor, aroma, etc."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="submit-btn"
+            [disabled]="beerForm.invalid"
+          >
+            Guardar cerveza
+          </button>
+
+        </form>
+      </div>
+    </div>
