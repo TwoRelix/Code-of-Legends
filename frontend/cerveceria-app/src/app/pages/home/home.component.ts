@@ -21,40 +21,91 @@ import { RouterLink } from '@angular/router';
   `,
   styles: [`
     .home {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 80vh;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    }
-    .hero {
-      text-align: center;
-      color: white;
-      padding: 2rem;
-    }
-    .hero-icon { font-size: 5rem; }
-    h1 {
-      font-size: 2.5rem;
-      margin: 1rem 0 0.5rem;
-      color: #f5a623;
-    }
-    p { color: #aaa; font-size: 1.1rem; margin-bottom: 2rem; }
-    .hero-actions { display: flex; gap: 1rem; justify-content: center; }
-    .btn {
-      padding: 0.7rem 1.8rem;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
-      transition: transform 0.2s, opacity 0.2s;
-    }
-    .btn:hover { transform: translateY(-2px); opacity: 0.9; }
-    .btn-primary { background: #f5a623; color: #1a1a2e; }
-    .btn-secondary {
-      background: transparent;
-      color: #f5a623;
-      border: 2px solid #f5a623;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 2rem;
+}
+
+.hero {
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.hero-icon {
+  font-size: clamp(3rem, 8vw, 5rem);
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  margin: 1rem 0 0.5rem;
+  color: #f5a623;
+}
+
+p {
+  color: #aaa;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.9rem 1.8rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background: #f5a623;
+  color: #1a1a2e;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #f5a623;
+  border: 2px solid #f5a623;
+}
+
+@media (max-width: 600px) {
+
+  .home {
+    padding: 1rem;
+  }
+
+  .hero {
+    padding: 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
   `]
 })
 export class HomeComponent {}
