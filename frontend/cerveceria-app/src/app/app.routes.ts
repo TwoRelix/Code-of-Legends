@@ -17,10 +17,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/beer-catalog/beer-catalog.component').then(m => m.BeerCatalogComponent)
   },
-  {
-    path: 'add-beer',
-    loadComponent: () =>
-      import('./components/add-beer/add-beer.component').then(m => m.AddBeerComponent)
-    // Este componente lo creará el Miembro 4
-  }
+  // {
+  //   path: 'add-beer',
+  //   loadComponent: () =>
+  //     import('./components/add-beer/add-beer.component').then(m => m.AddBeerComponent)
+  //   // Este componente lo creará el Miembro 4
+  // }
 ];
