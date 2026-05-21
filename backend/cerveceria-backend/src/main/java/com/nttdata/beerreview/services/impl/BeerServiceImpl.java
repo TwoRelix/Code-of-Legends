@@ -9,7 +9,7 @@ import com.nttdata.beerreview.repository.BreweryRepository;
 import com.nttdata.beerreview.services.BeerService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -46,7 +46,8 @@ public class BeerServiceImpl implements BeerService {
         Beer beer = new Beer();
         beer.setNombre(dto.nombre());
         beer.setEstilo(dto.estilo());
-        beer.setGraduacionAlcoholemica(dto.graduacionAlcoholemica());
+        // CORRECCIÓN 1: Convertimos tu BigDecimal del DTO al Double que espera la entidad de tu compañero
+        beer.setGraduacionAlcoholemica(dto.graduacionAlcoholemica() != null ? dto.graduacionAlcoholemica().doubleValue() : null);
         beer.setDescripcion(dto.descripcion());
         beer.setBrewery(brewery);
 
@@ -65,8 +66,11 @@ public class BeerServiceImpl implements BeerService {
                 beer.getId(),
                 beer.getNombre(),
                 beer.getEstilo(),
-                beer.getGraduacionAlcoholemica(),
+                // CORRECCIÓN 2: Convertimos el Double de la entidad al BigDecimal que espera tu BeerDTO
+                beer.getGraduacionAlcoholemica() != null ? BigDecimal.valueOf(beer.getGraduacionAlcoholemica()) : null,
                 beer.getDescripcion(),
-                beer.getBrewery() != null ? beer.getBrewery().getNombre() : "Sin cervecería");
+                // CORRECCIÓN 3: Si Lombok da problemas leyendo el getter de Brewery, usamos el atributo directamente o b.nombre
+                beer.getBrewery() != null ? beer.getBrewery().getName() : "Sin cervecería"
+        );
     }
 }

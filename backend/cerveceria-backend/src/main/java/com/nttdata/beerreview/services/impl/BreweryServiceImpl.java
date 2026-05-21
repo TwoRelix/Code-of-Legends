@@ -20,8 +20,8 @@ public class BreweryServiceImpl implements BreweryService {
     @Transactional(readOnly = true)
     public List<BreweryDTO> listarTodas() {
         return breweryRepository.findAll()
-                .stream()
-                .map(b -> new BreweryDTO(b.getId(), b.getNombre()))
-                .toList();
+        .stream()
+        .map(b -> new BreweryDTO(b.getId(), b.getName()))
+        .toList();
     }
 }
