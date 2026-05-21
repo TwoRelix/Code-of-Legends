@@ -9,6 +9,7 @@ import com.nttdata.beerreview.repository.BreweryRepository;
 import com.nttdata.beerreview.services.BeerService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
@@ -56,7 +57,6 @@ public class BeerServiceImpl implements BeerService {
     @Override
     @Transactional(readOnly = true)
     public List<BeerDTO> listarPorCerveceria(Long breweryId) {
-        // Nota: Asegúrate de que tu compañero añada este método en BeerRepository si da error
         return beerRepository.findByBreweryId(breweryId).stream().map(this::convertToDTO).toList();
     }
 
@@ -67,7 +67,6 @@ public class BeerServiceImpl implements BeerService {
                 beer.getEstilo(),
                 beer.getGraduacionAlcoholemica(),
                 beer.getDescripcion(),
-                beer.getBrewery() != null ? beer.getBrewery().getNombre() : "Sin cervecería"
-        );
+                beer.getBrewery() != null ? beer.getBrewery().getNombre() : "Sin cervecería");
     }
 }
