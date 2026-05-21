@@ -18,9 +18,8 @@ export class AddBeer {
   beerForm = this.fb.group({
     nombre: ['', Validators.required],
     estilo: ['', Validators.required],
-    graduacionAlcoholemica: [0, [Validators.required, Validators.min(0)]],
+    graduacionAlcoholemica: [0],
     descripcion: [''],
-    cerveceriaId: [null, Validators.required]
   });
 
   isLoading = false;
@@ -45,7 +44,6 @@ export class AddBeer {
       estilo: formValue.estilo,
       graduacionAlcoholemica: formValue.graduacionAlcoholemica,
       descripcion: formValue.descripcion,
-      cerveceriaId: formValue.cerveceriaId
     };
 
     this.http.post('http://localhost:8080/api/beers', payload)
